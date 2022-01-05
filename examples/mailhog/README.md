@@ -51,21 +51,4 @@ lando poweroff
 ```
 
 
-Validation Commands
--------------------
-
-Run the following commands to confirm things
-
-```bash
-# Verify mailhog portforward
-docker inspect mailhog_mailhog_1 | grep HostPort | grep 1026
-lando info | grep 1026
-
-# Verify the mhsendmail binary was installed
-lando ssh appserver -c "ls -lsa /usr/local/bin | grep mhsendmail"
-
-# Verify we can send and receive mail
-lando php /app/mail.php
-lando ssh -c "curl mailhog/api/v2/messages | grep leiaorgana@rebellion.mil"
-```
 
