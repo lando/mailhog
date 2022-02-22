@@ -1,26 +1,9 @@
 ---
-description: Add a highly configurable mailhog service to Lando for local development with all the power of Docker and Docker Compose.
+title: Configuration
+description: Learn how to configure the Lando MailHog service.
 ---
 
-# MailHog
-
-[MailHog](https://github.com/mailhog/MailHog) is an email testing tool for developers.
-
-You can easily add it to your Lando app by adding an entry to the [services](https://docs.lando.dev/config/services.html) top-level config in your [Landofile](https://docs.lando.dev/config/lando.html).
-
-[[toc]]
-
-## Supported versions
-
-*   **[v1.0.1](https://hub.docker.com/r/mailhog/mailhog/)** **(default)**
-*   [v1.0.0](https://hub.docker.com/r/mailhog/mailhog/)
-*   [custom](https://docs.lando.dev/config/services.html#advanced)
-
-## Patch versions
-
-This service does not support patch versions but if you **really** need something like that you could consider using either a [custom compose service](./compose.html) or a service [overrides](https://docs.lando.dev/config/services.html#overrides).
-
-## Configuration
+# Configuration
 
 Here are the configuration options, set to the default values, for this service. If you are unsure about where this goes or what this means we *highly recommend* scanning the [services documentation](https://docs.lando.dev/config/services.html) to get a good handle on how the magicks work.
 
@@ -34,7 +17,7 @@ services:
     hogfrom: []
 ```
 
-### Port forwarding
+## Port forwarding
 
 `portforward` will allow you to access this service externally by assigning a port directly on your host's `localhost`. Note that `portforward` can be set to either `true` or a specific `port` but we *highly recommend* you set it to `true` unless you have pretty good knowledge of how port assignment works or you have a **very** compelling reason for needing a locked down port.
 
@@ -60,7 +43,7 @@ services:
     portforward: 1025
 ```
 
-### Hogging Mail
+## Hogging Mail
 
 You will need to list the services the wish to hog mail from using the `hogfrom` config key. Note that the services in the list should be other services in your application. They can be discovered by running [lando info](https://docs.lando.dev/cli/info.html).
 
@@ -86,5 +69,3 @@ Note that we will install the [mhsendmail](https://github.com/mailhog/mhsendmail
 ## Getting information
 
 You can get connection and credential information about your mailhog instance by running [`lando info`](https://docs.lando.dev/cli/info.html). It may also be worth checking out our [accessing services externally guide](https://docs.lando.dev/guides/external-access.html).
-
-<RelatedGuides tag="MailHog"/>
