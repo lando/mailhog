@@ -1,6 +1,7 @@
 ---
 title: MailHog Lando Plugin
 description: Add a highly configurable mailhog service to Lando for local development with all the power of Docker and Docker Compose.
+next: ./config.html
 ---
 
 # MailHog
