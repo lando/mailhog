@@ -2,7 +2,7 @@
 
 // Modules
 const _ = require('lodash');
-const utils = require('./../../lib/utils');
+const path = require('path');
 
 // Cmdz
 const amd64dlUrl = 'https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64';
@@ -16,7 +16,7 @@ module.exports = {
   config: {
     version: 'v1.0.1',
     supported: ['v1.0.0', 'v1.0.1'],
-    confSrc: __dirname,
+    confSrc: path.resolve(__dirname, '..', 'config'),
     hogfrom: [],
     port: '1025',
     sources: [],
@@ -59,7 +59,8 @@ module.exports = {
         // Get download URL based on ARCH
         const mhsendmailURL = (isArmed) ? arm64dlUrl : amd64dlUrl;
         // Add some build tazk
-        utils.addBuildStep([downloadCmd(mhsendmailURL), chmodCmd], options._app, hog, 'build_as_root_internal');
+        const dlc = downloadCmd(mhsendmailURL);
+        require('../utils/add-build-step')([dlc, chmodCmd], options._app, hog, 'build_as_root_internal');
         // Set the hogfrom with some extra things
         options.sources.push({services: _.set({}, hog, {
           environment: {MH_SENDMAIL_SMTP_ADDR: 'sendmailhog:1025'},
