@@ -11,4 +11,4 @@ services:
 # DO NOT REMOVE THIS!
 plugins:
   "@lando/mailhog": ../..
-  "@lando/php": ../../node_modules/@lando/php
+  "@lando/php": ./node_modules/@lando/php
