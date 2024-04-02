@@ -14,7 +14,7 @@ jobs:
         leia-test:
           - examples/mailhog
         lando-version:
-          - 3-dev-slim
+          - 3-slim
         os:
           - ubuntu-22.04
         node-version:
@@ -37,7 +37,7 @@ jobs:
           version: dev
           sync: false
       - name: Setup lando ${{ matrix.lando-version }}
-        uses: lando/setup-lando@v2
+        uses: lando/setup-lando@v3
         with:
           lando-version: ${{ matrix.lando-version }}
           config: |
