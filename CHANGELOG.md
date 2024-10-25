@@ -1,3 +1,5 @@
+## {{ UNRELEASED_VERSION }} - [{{ UNRELEASED_DATE }}]({{ UNRELEASED_LINK }})
+
 ## v1.1.0 - [March 8, 2024](https://github.com/lando/mailhog/releases/tag/v1.1.0)
   * Updated to latest database services.
 
