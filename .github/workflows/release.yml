@@ -9,6 +9,7 @@ jobs:
   # When a prerelease is promoted to a full release, update the npm latest tag
   promote:
     if: github.event.action == 'released'
+    needs: deploy
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
@@ -42,9 +43,9 @@ jobs:
     steps:
       # Install deps and cache
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Install node ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: https://registry.npmjs.org
